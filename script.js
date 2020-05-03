@@ -8,8 +8,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    let status = read ? 'read' : 'not read yet';
-    return `${title} by ${author}, ${pages}, ${status}`;
+    this.read = !this.read;
   }
 }
 
@@ -51,6 +50,7 @@ function render() {
     let rowRead = document.createElement('td');
     let deleteBtn = document.createElement('td');
 
+    newRow.dataset.index = i;
     rowTitle.textContent = myLibrary[i].title;
     rowAuthor.textContent = myLibrary[i].author;
     rowPages.textContent = myLibrary[i].pages;
@@ -58,7 +58,7 @@ function render() {
     rowRead.textContent = myLibrary[i].read ? 'read' : 'not read';
 
     deleteBtn.innerHTML = `<button type="button" class="delete mdi mdi-delete-forever" 
-                            onclick="deleteRow(${i})"></button>`
+                            onclick="deleteRow(this)"></button>`
 
     newRow.appendChild(rowTitle);
     newRow.appendChild(rowAuthor);
@@ -70,11 +70,16 @@ function render() {
   }
 }
 
-function deleteRow(index) {
+function deleteRow(btn) {  
+  let index = btn.parentNode.parentNode.dataset.index;
   myLibrary.splice(index, 1);
   save();
-  location.reload();
-  return false;
+  removeRowFromDOM(index);
+}
+
+function removeRowFromDOM(index) {
+  const row = document.querySelector(`[data-index="${index}"]`);
+  row.remove();
 }
 
 function displayForm() {
