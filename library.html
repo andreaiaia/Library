@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.1.45/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>Library</title>
+</head>
+<body>
+  <div id="container">
+    <h1>Library Project</h1>
+    
+    <button type="button" class="displayForm">Add new book</button>
+  
+    <table class="books">
+      <tr>
+        <th class="title">Title</th>
+        <th class="author">Author</th>
+        <th class="pager">Pages</th>
+        <th class="read">Read</th>
+        <th>Remove</th>
+      </tr>
+    </table>
+  </div>
+
+  <div id="contForm" class="hide">
+    <form>
+      <button class="displayForm delete mdi mdi-close-box-outline"></button>
+      <label for="title">Book Title:</label>
+      <input type="text" id="formTitle">
+      <label for="author">Author:</label>
+      <input type="text" id="formAuthor">
+      <label for="pages">Pages:</label>
+      <input type="text" id="formPages">
+      <span>
+        <label for="read">Have you read it?</label>
+        <input type="checkbox" name="read" id="formRead">
+      </span>
+      <input type="submit" value="Add book" onclick="addBookToLibrary()">
+    </form>
+  </div>
+  
+</body>
+<script src="script.js"></script>
+</html>
