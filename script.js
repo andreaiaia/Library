@@ -7,9 +7,6 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    this.read = !this.read;
-  }
 }
 
 function addBookToLibrary() {
@@ -55,7 +52,7 @@ function render() {
     rowAuthor.textContent = myLibrary[i].author;
     rowPages.textContent = myLibrary[i].pages;
 
-    rowRead.textContent = myLibrary[i].read ? 'read' : 'not read';
+    rowRead.innerHTML = `<input type="checkbox" name="read" onclick="setStatus(this)">`;
 
     deleteBtn.innerHTML = `<button type="button" class="delete mdi mdi-delete-forever" 
                             onclick="deleteRow(this)"></button>`
@@ -67,7 +64,16 @@ function render() {
     newRow.appendChild(deleteBtn);
 
     document.querySelector('.books').appendChild(newRow);
+    document.querySelector(`[data-index="${i}"]`)
+            .querySelector('input')
+            .checked = myLibrary[i].read;
   }
+}
+
+function setStatus(bookCheck) {
+  let index = bookCheck.parentNode.parentNode.dataset.index;
+  myLibrary[index].read = bookCheck.checked;
+  save();
 }
 
 function deleteRow(btn) {  
