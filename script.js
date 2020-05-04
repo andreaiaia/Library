@@ -2,11 +2,16 @@
 let myLibrary = [];
 
 /* GENERATE LIBRARY */
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor (title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  changeStatus (status) {
+    this.read = status;
+  }
 }
 
 function addBookToLibrary() {
@@ -72,7 +77,7 @@ function render() {
 
 function setStatus(bookCheck) {
   let index = bookCheck.parentNode.parentNode.dataset.index;
-  myLibrary[index].read = bookCheck.checked;
+  myLibrary[index].changeStatus(bookCheck.checked);
   save();
 }
 
