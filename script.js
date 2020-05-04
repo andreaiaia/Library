@@ -2,17 +2,17 @@
 let myLibrary = [];
 
 /* GENERATE LIBRARY */
-class Book {
-  constructor (title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-  }
-  changeStatus (status) {
-    this.read = status;
-  }
+function Book (title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
+
+Book.prototype.changeStatus = function(status) {
+  this.read = status;
+ }
+
 
 function addBookToLibrary() {
   const title = document.querySelector('#formTitle').value;
