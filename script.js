@@ -30,9 +30,9 @@ function save() {
 }
 
 function readLocalStorage() {
-  myLibrary = JSON.parse(localStorage.getItem('library'));
+  const tempLibrary = JSON.parse(localStorage.getItem('library'));
+  myLibrary = tempLibrary.map(book => new Book(book.title, book.author, book.pages, book.read));
 }
-
 
 /* DOM STUFF */
 
