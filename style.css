@@ -96,3 +96,15 @@ form > .delete {
   border: none;
   box-shadow: none;
 }
+
+input:valid {
+  border: 2px solid green;
+}
+
+input:invalid:required {
+  background-color: rgba(255, 93, 93, 0.815);
+}
+
+input:invalid {
+  border: 2px dashed red;
+}

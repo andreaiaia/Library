@@ -28,11 +28,11 @@
     <form>
       <button class="displayForm delete mdi mdi-close-box-outline"></button>
       <label for="title">Book Title:</label>
-      <input type="text" id="formTitle">
+      <input type="text" id="formTitle" required>
       <label for="author">Author:</label>
-      <input type="text" id="formAuthor">
+      <input type="text" id="formAuthor" required>
       <label for="pages">Pages:</label>
-      <input type="text" id="formPages">
+      <input type="number" id="formPages" required min="1">
       <span>
         <label for="read">Have you read it?</label>
         <input type="checkbox" name="read" id="formRead">
